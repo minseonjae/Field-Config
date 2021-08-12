@@ -34,6 +34,7 @@ public class TestConfig extends FieldConfig {
     
     @ConfigFieldSerializer(LocationSerializer.class)
     public Location test4 = new Location(Bukkit.getWorld("world"), 0, 0, 0, 0, 0);
+    
     @ConfigFieldSerializer(ItemCodeSerializer.class)
     public ItemStack test5 = new ItemStack(1, (short) 2);
     
