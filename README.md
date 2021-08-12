@@ -36,9 +36,7 @@ public class TestConfig extends FieldConfig {
     
 }
 ```
-
-##Saved
-###config.yml
+### Saved config.yml
 
 ``` yaml
 test1: '111'
@@ -48,4 +46,4 @@ test5: '1:2'
 ```
 
 
-###reverse loading of config.yml will change the value of the variable.
+### Reverse loading of config.yml will change the value of the variable.
