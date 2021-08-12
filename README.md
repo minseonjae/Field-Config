@@ -3,6 +3,7 @@
 Bukkit & BungeeCord Config Library
 
 __* Platform-Config is required!__
+_(already included)_
 
 ## Example
 ### TestPlugin.java
