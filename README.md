@@ -2,7 +2,7 @@
 
 Bukkit & BungeeCord Config Library
 
-###__Required List__ _(already included)_
+### __Required List__ _(already included)_
 __- Platform-Config__\
 __- Spigot__\
 __- BungeeCord__\
