@@ -2,8 +2,11 @@
 
 Bukkit & BungeeCord Config Library
 
-__* Platform-Config is required!__
-_(already included)_
+###__Required List__ _(already included)_
+__- Platform-Config__\
+__- Spigot__\
+__- BungeeCord__\
+__- lombok__
 
 ## Example
 ### TestPlugin.java
