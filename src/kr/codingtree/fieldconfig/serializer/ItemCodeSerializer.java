@@ -11,10 +11,13 @@ public class ItemCodeSerializer implements ConfigSerializer<ItemStack> {
 
     @Override
     public ItemStack deserializer(String value) {
-        if (value.contains(":")) {
-            String[] split = value.split(":");
-            return new ItemStack(Integer.parseInt(split[0], Short.parseShort(split[1])));
-        } else new ItemStack(Integer.parseInt(value));
-        return null;
+        try {
+            if (value.contains(":")) {
+                String[] split = value.split(":");
+                return new ItemStack(Integer.parseInt(split[0]), 1, Short.parseShort(split[1]));
+            } else return new ItemStack(Integer.parseInt(value));
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }

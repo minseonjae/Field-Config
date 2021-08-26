@@ -3,6 +3,7 @@ package kr.codingtree.fieldconfig;
 import kr.codingtree.platformconfig.Config;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import org.bukkit.Bukkit;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -35,15 +36,15 @@ public class FieldConfig {
                     if (serializer != null) {
                         value = serializer.value().newInstance().deserializer(value.toString());
                     }
+                    field.set(this, value);
                 }
-                field.set(this, value);
             }
         }
         return this;
     }
     @SneakyThrows(Exception.class)
     public FieldConfig save() {
-        config.load();
+        load();
 
         for (Field field : getClass().getDeclaredFields()) {
             if (field.getAnnotation(ConfigFieldExclude.class) == null)  {
@@ -54,7 +55,7 @@ public class FieldConfig {
                 if (value != null) {
                     ConfigFieldSerializer serializer = field.getAnnotation(ConfigFieldSerializer.class);
                     if (serializer != null) {
-                        value = serializer.value().newInstance().serializer(value.toString());
+                        value = serializer.value().newInstance().serializer(value);
                     }
                 }
 
