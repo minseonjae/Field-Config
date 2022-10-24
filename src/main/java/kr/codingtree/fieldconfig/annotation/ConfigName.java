@@ -1,0 +1,15 @@
+package kr.codingtree.fieldconfig.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * Config에 저장할 때 변수 이름이 아닌 다른 이름으로 바꾸고 싶을 때 사용합니다.
+ */
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ConfigName {
+    String value();
+}
