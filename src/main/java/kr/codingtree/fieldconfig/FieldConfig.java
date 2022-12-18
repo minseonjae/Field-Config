@@ -219,14 +219,10 @@ public class FieldConfig {
             Type[] types = ((ParameterizedType) field.getGenericType()).getActualTypeArguments();
 
             if (types.length == 2) {
-                if (isDefaultClass(types[0].getTypeName()) && isDefaultClass(types[1].getTypeName())) {
-                    return fieldValue;
-                }
+                ValueSerializer keySerializer = Serializers.get(types[0]),
+                        valueSerializer = Serializers.get(types[1]);
 
-                ValueSerializer key = Serializers.get(types[0]),
-                        value = Serializers.get(types[1]);
-
-                if (key == null || value == null) {
+                if ((keySerializer == null && !isDefaultClass(types[0].getTypeName())) || (valueSerializer == null && !isDefaultClass(types[1].getTypeName()))) {
                     return null;
                 }
 
@@ -234,7 +230,10 @@ public class FieldConfig {
                 LinkedHashMap<String, String> dataMap = new LinkedHashMap<>();
 
                 for (Map.Entry entry : map.entrySet()) {
-                    dataMap.put(key.serializer(entry.getKey()), value.serializer(entry.getValue()));
+                    String key = keySerializer != null ? keySerializer.serializer(entry.getKey()) : String.valueOf(entry.getKey()),
+                            value = valueSerializer != null ? valueSerializer.serializer(entry.getValue()) : String.valueOf(entry.getValue());
+
+                    dataMap.put(key, value);
                 }
 
                 return dataMap;

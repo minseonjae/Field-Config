@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'kr.codingtree'
-version '0.0.1'
+version '0.0.2'
 
 repositories {
     mavenCentral()
@@ -19,4 +19,13 @@ dependencies {
 
     implementation 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs "src/main/java"
+            exclude "**/example/**"
+        }
+    }
 }

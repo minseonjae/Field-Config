@@ -1,5 +1,5 @@
 a: 1
-c: a
+c: qwer
 리스트:
 - a
 - b
@@ -8,4 +8,7 @@ c: a
   a: aa
   b: bb
   c: cc
-  d: dd
+  d: qq
+테스트:
+  a: 2, 4
+  b: 3, 5

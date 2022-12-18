@@ -27,4 +27,7 @@ public class Test {
     @ConfigExclude
     public static Map<String, String> map2 = new HashMap();
 
+    @ConfigName("테스트")
+    public static Map<String, FieldSave> map3 = new HashMap();
+
 }
